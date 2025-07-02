@@ -3,7 +3,8 @@
 
 unsigned char getOpenBitNum(int value);
 
-int main(void) {
+int main(void)
+{
     int value;
 
     printf("请输入一个 int 值：");
@@ -14,14 +15,16 @@ int main(void) {
     return 0;
 }
 
-unsigned char getOpenBitNum(int value) {
+unsigned char getOpenBitNum(int value)
+{
     int mask = 0x1;
     unsigned char count = 0;
     register unsigned char i;
 
-    for (i = 0; i < sizeof(int) * CHAR_BIT; ++i) {
+    for (i = 0; i < sizeof(int) * CHAR_BIT; ++i)
+    {
         if ((value >> i) & mask == 1)
-            ++count; 
+            ++count;
     }
 
     return count;

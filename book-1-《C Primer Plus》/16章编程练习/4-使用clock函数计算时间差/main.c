@@ -5,7 +5,8 @@
 
 void testFunction(void);
 
-int main(void) {
+int main(void)
+{
     clock_t start_time, end_time;
 
     start_time = clock();
@@ -19,10 +20,12 @@ int main(void) {
     return 0;
 }
 
-void testFunction(void) {
+void testFunction(void)
+{
     register size_t i;
 
-    for (i = 0; i < 1000000; ++i) {
+    for (i = 0; i < 1000000; ++i)
+    {
         printf("\r%zu", i);
         fflush(stdout);
     }

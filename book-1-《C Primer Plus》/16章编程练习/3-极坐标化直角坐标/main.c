@@ -4,22 +4,24 @@
 #define PI (4.0 * atan(1.0))
 #define ANGLE_TO_RADIAN(X) ((X) * (PI / 180.0))
 
-struct PolarCoordinates {
+struct PolarCoordinates
+{
     float length;
     float angle;
 };
 
-struct CartesianCoordinates {
+struct CartesianCoordinates
+{
     float x;
     float y;
 };
 
 struct CartesianCoordinates polarToCartesian(struct PolarCoordinates polar_coordinates);
 
-int main(void) {
+int main(void)
+{
     struct PolarCoordinates polar_coordinates_0;
     struct CartesianCoordinates cartesian_coordinates_0;
-
 
     printf("请输入极坐标的长度：");
     scanf("%f", &polar_coordinates_0.length);
@@ -34,7 +36,8 @@ int main(void) {
     return 0;
 }
 
-struct CartesianCoordinates polarToCartesian(struct PolarCoordinates polar_coordinates) {
+struct CartesianCoordinates polarToCartesian(struct PolarCoordinates polar_coordinates)
+{
     struct CartesianCoordinates cartsian_coordinates;
 
     cartsian_coordinates.x = polar_coordinates.length * cos(ANGLE_TO_RADIAN(polar_coordinates.angle));

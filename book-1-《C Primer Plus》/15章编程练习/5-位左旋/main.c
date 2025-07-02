@@ -4,8 +4,8 @@
 // 位左旋：按位向左移动，左边多出的位重新出现在右边
 unsigned bitRotateL(unsigned value, unsigned char step);
 
-
-int main(void) {
+int main(void)
+{
     unsigned value;
     unsigned char step;
 
@@ -13,7 +13,7 @@ int main(void) {
     scanf("%u", &value);
 
     printf("请输入要左旋的步数：");
-     scanf("%hhu", &step);
+    scanf("%hhu", &step);
 
     printf("左旋后的值为：%u。\n", bitRotateL(value, step));
 
@@ -21,12 +21,12 @@ int main(void) {
 }
 
 // 位左旋：按位向左移动，左边多出的位重新出现在右边
-unsigned bitRotateL(unsigned value, unsigned char step) {
+unsigned bitRotateL(unsigned value, unsigned char step)
+{
     _Bool record;
     unsigned result = value;
     unsigned char valid_step;
     register unsigned char i;
-
 
     static const unsigned char uint_bits = sizeof(unsigned) * CHAR_BIT;
 
@@ -34,13 +34,14 @@ unsigned bitRotateL(unsigned value, unsigned char step) {
     valid_step = step % uint_bits;
 
     // 左旋
-    for (i = 0; i < valid_step; ++i) {
+    for (i = 0; i < valid_step; ++i)
+    {
         // 记录
-            record = (value >> uint_bits - 1u - i) & 0x1u;
+        record = (value >> uint_bits - 1u - i) & 0x1u;
         // 左移
-            result <<= 1u;
+        result <<= 1u;
         // 填充
-            result |= record;
+        result |= record;
     }
 
     return result;
