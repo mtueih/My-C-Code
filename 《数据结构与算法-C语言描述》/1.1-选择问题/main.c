@@ -6,18 +6,19 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#define N 10000    // 数的个数
-#define K 6666     // 最大值的序号
+#define N 10000 // 数的个数
+#define K 6666  // 最大值的序号
 
-#define USED_METHOD 1  // 定义使用哪个思路的代码，用于条件编译
+#define USED_METHOD 1 // 定义使用哪个思路的代码，用于条件编译
 
 // 对 intmax_t 数组进行排序的函数，第三个参数用于指定是按顺序排序
-void sort(intmax_t * p_arr, size_t arr_size, bool isASC);
+void sort(intmax_t *p_arr, size_t arr_size, bool isASC);
 
-int main(void) {
+int main(void)
+{
     register size_t i, j, z;
     intmax_t temp, result, arr_1[N], arr_2[K];
-    FILE * p_file;
+    FILE *p_file;
 
     // printf("请输入 %zd 个整数：\n", N);
 
@@ -31,9 +32,10 @@ int main(void) {
         将 N 个数读入一个 N 元数组;
         使用冒泡排序法对数组进行排序;
         读出位置为 k（下标应为 k - 1）的元素。
-    */ 
-    
-    for (i = 0; i < N; ++i) {
+    */
+
+    for (i = 0; i < N; ++i)
+    {
         fscanf(p_file, "%jd", &arr_1[i]);
     }
 
@@ -53,30 +55,34 @@ int main(void) {
     */
 
     // 读取前 k 个数到数组中，并使用冒泡排序对其进行降序排列
-    for (i = 0; i < K; ++i) {
+    for (i = 0; i < K; ++i)
+    {
         fscanf(p_file, "%jd", &arr_2[i]);
     }
 
     sort(arr_2, K, false);
 
     // 逐个读取后面的数，并根据情况“插入”数组
-    for (i = K; i < N; ++i) {
+    for (i = K; i < N; ++i)
+    {
         fscanf(p_file, "%jd", &temp);
         // 如果其小于等于第 k 个数，则忽略
         if (temp <= arr_2[K - 1])
             continue;
-        
+
         // 在原数组中寻找其正确位置
-        for (j = 0; j < K; ++j) {
+        for (j = 0; j < K; ++j)
+        {
             if (temp > arr_2[j])
                 break;
         }
 
         // 后面元素依次“右移”
-        for (z = K - 1; z > j; --z) {
+        for (z = K - 1; z > j; --z)
+        {
             arr_2[z] = arr_2[z - 1];
         }
-        
+
         arr_2[j] = temp;
     }
 
@@ -90,18 +96,22 @@ int main(void) {
     return 0;
 }
 
-void sort(intmax_t * p_arr, size_t arr_size, bool isASC) {
+void sort(intmax_t *p_arr, size_t arr_size, bool isASC)
+{
     register size_t i, j;
     intmax_t temp;
 
-    if (p_arr == NULL) return;
+    if (p_arr == NULL)
+        return;
 
-    for (i = 0; i < arr_size - 1; ++i) {
-        for (j = 0; j < arr_size - 1 - i; ++j) {
-            if (isASC 
-                ? p_arr[j] > p_arr[j + 1] 
-                : p_arr[j] < p_arr[j + 1]
-            ) {
+    for (i = 0; i < arr_size - 1; ++i)
+    {
+        for (j = 0; j < arr_size - 1 - i; ++j)
+        {
+            if (isASC
+                    ? p_arr[j] > p_arr[j + 1]
+                    : p_arr[j] < p_arr[j + 1])
+            {
                 temp = p_arr[j];
                 p_arr[j] = p_arr[j + 1];
                 p_arr[j + 1] = temp;
