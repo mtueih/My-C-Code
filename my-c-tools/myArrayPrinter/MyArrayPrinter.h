@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 
-#define printArray(arr, n, ...)                       \
+#define printArray(arr, n)                            \
     _Generic((arr),                                   \
         char *: printCharArray,                       \
         const char *: printCharArray,                 \
