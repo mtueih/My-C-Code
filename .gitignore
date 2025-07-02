@@ -1,2 +1,9 @@
 *.exe
 .vscode
+*.o
+*.out
+*.a
+*.so
+my-c-tools/bin
+my-c-tools/lib
+my-c-tools/include

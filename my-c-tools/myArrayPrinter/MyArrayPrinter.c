@@ -1,12 +1,18 @@
 #include "MyArrayPrinter.h"
+#include <stdio.h>
 
-#define ARRAY_PRINT_FUNCTION_DEFINITION(type, name, format)\
-    void print##name##Array(const type * arr, size_t ele_num) {\
-        register size_t i;                                    \
-        for (i = 0; i < ele_num; ++i) {                        \
-            printf(format "\t", arr[i]);                      \
-        }                                                     \
-        putchar('\n');                                        \
+#define ARRAY_PRINT_FUNCTION_DEFINITION(type, name, format)  \
+    void print##name##Array(const type *arr, size_t ele_num) \
+    {                                                        \
+        size_t i;                                            \
+        printf("[ ");                                        \
+        for (i = 0; i < ele_num; ++i)                        \
+        {                                                    \
+            printf(format, arr[i]);                          \
+            if (i < ele_num - 1)                             \
+                printf(", ");                                \
+        }                                                    \
+        printf(" ]\n");                                      \
     }
 
 ARRAY_PRINT_FUNCTION_DEFINITION(char, Char, "%c");
@@ -22,4 +28,18 @@ ARRAY_PRINT_FUNCTION_DEFINITION(long long, LLong, "%lld");
 ARRAY_PRINT_FUNCTION_DEFINITION(unsigned long long, ULLong, "%llu");
 ARRAY_PRINT_FUNCTION_DEFINITION(float, Float, "%f");
 ARRAY_PRINT_FUNCTION_DEFINITION(double, Double, "%f");
-ARRAY_PRINT_FUNCTION_DEFINITION(long, LDouble, "%lf");
+ARRAY_PRINT_FUNCTION_DEFINITION(long double, LDouble, "%Lf");
+
+void printGenericArray(const void *arr, size_t ele_num,
+                       size_t size, void (*printFunc)(const void *))
+{
+    size_t i;
+    printf("[ ");
+    for (i = 0; i < ele_num; ++i)
+    {
+        printFunc(arr + i * size);
+        if (i < ele_num - 1)
+            printf(", ");
+    }
+    printf(" ]\n");
+}
