@@ -1,0 +1,13 @@
+Language: C
+BasedOnStyle: LLVM
+
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+# 大括号风格
+BraceWrapping:
+  AfterControlStatement: Never  # if/for/while 后不换行加大括号
+  AfterFunction:       false   # 函数定义后不换行加大括号
+  SplitEmptyFunction:  true    # 空函数体分行
+  SplitEmptyRecord:    true    # 空结构体/联合分行

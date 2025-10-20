@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "command",
+            "name": "Compile and Run C",
+            "program": "pwsh",
+            "args": ["-Command", "gcc $FILE$ && $FILE_DIR$/a.exe"]
+        }
+    ]
+}
