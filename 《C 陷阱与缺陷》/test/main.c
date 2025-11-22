@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include <Windows.h>
+// #include <Windows.h>
+#include <unistd.h>
 
 int main(void) {
 
@@ -39,7 +40,8 @@ int main(void) {
     // printf("%d", 0[arr]);
 
     printf("Hello, ");
-    Sleep(2000);
+    // Sleep(2000);
+    sleep(2);
     printf("World!\n");
 
 
