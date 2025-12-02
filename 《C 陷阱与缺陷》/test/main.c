@@ -1,6 +1,7 @@
 #include <stdio.h>
 // #include <Windows.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 int main(void) {
 
@@ -55,7 +56,7 @@ int main(void) {
     //     putchar(c);
     // }
 
-    
+    RAND_MAX;
 
     return 0;
 }
